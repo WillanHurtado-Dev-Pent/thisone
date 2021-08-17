@@ -1,0 +1,157 @@
+<div class="containerdash">
+		<div class="navigation">
+			<ul>
+				<li>
+					<a >
+						
+						<span class="title"><h2>SUSHICAKE </h2></span>
+					</a>
+				</li>
+				
+
+				<li>
+					<a href="/dashboard/pedidos">
+						<span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+						<span class="title">pedidos</span>
+					</a>
+				</li>
+				<li>
+					<a href="/dashboard">
+						<span class="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+						<span class="title">productos </span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/dashboard/secciones">
+						<span class="icon"><i class="fa fa-list-alt" aria-hidden="true"></i></span>
+						<span class="title">secciones</span>
+					</a>
+				</li>
+		
+				<li>
+					<a href="/authentication/logout">
+						<span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+						<span class="title">Sign Out</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle" onclick="toggleMenu()"></div>
+				
+			</div>
+		
+			<div class="details">
+				<div class="recentOrders">
+					<div class="cardHeader">
+						<h2>SECCIONES PUBLICADAS</h2>
+			
+						<a href="/dashboard/newsec" class="btn">ADICIONAR NUEVA SECCION  </a>
+				
+					</div>
+					{{#each sections}}
+					   
+						<table>
+							<thead>
+								<tr>
+									<td>NOMBRE</td>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									
+									<td>{{nombresec}}</td>
+									<td>{{direccion}}</td>
+									<td><span class="status delivered">
+										<a href="/dashboard/newprodu/{{id_sec}}">adicionar producto </a>
+										</span></td>
+									<td><span class="status return">
+										<a href="/dashboard/deletesec/{{id_sec}}" >eliminar</a>
+										</span></td>
+								</tr>
+							</tbody>
+						</table>
+					{{/each}}	
+					{{#each section}}
+					   
+						<table>
+							<thead>
+								<tr>
+									<td>NOMBRE</td>
+									<td>DESCRIPCION</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									
+									<td>{{nombresec}}</td>
+									<td>{{direccion}}</td>
+									<td><span class="status delivered">
+										<a href="/dashboard/newprodu/{{id_sec}}">adicionar producto </a>
+										</span></td>
+									<td><span class="status return">
+										<a href="/dashboard/deletesec/{{id_sec}}" >eliminar</a>
+										</span></td>
+								</tr>
+							</tbody>
+						</table>
+					{{/each}}	
+				</div>
+				<div class="recentCustomers">
+					<div class="cardHeader">
+						<h2>PEDIDOS RECIENTES</h2>
+					</div>
+					<table>
+						<tbody>
+							<tr>
+								<td width="60px"><div class="imgBx"><img src="img1.jpg"></div></td>
+								<td><h4>David<br><span>Italy</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img2.jpg"></div></td>
+								<td><h4>Muhammad<br><span>India</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img3.jpg"></div></td>
+								<td><h4>Amelia<br><span>France</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img4.jpg"></div></td>
+								<td><h4>Olivia<br><span>USA</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img5.jpg"></div></td>
+								<td><h4>Amit<br><span>Japan</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img6.jpg"></div></td>
+								<td><h4>Ashraf<br><span>India</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img7.jpg"></div></td>
+								<td><h4>Diana<br><span>Malaysia</span></h4></td>
+							</tr>
+							<tr>
+								<td><div class="imgBx"><img src="img8.jpg"></div></td>
+								<td><h4>Amit<br><span>India</span></h4></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function toggleMenu(){
+			let navigation = document.querySelector('.navigation');
+			let toggle = document.querySelector('.toggle');
+			let main = document.querySelector('.main');
+			navigation.classList.toggle('active');
+			toggle.classList.toggle('active');
+			main.classList.toggle('active');
+		}
+	</script>

@@ -1,0 +1,59 @@
+<script>
+    function previewImage(nb) {        
+        var reader = new FileReader();
+        reader.readAsDataURL(document.getElementById('image' + nb).files[0]); 
+    reader.onload = function (e) {             
+        document.getElementById('uploadPreview'+nb).src = e.target.result;         
+    };     
+}
+</script> 
+ <div class="container">
+        <div class="card">
+            {{#each editar}}
+            
+              <div class="imgBx">
+                  {{#if imagen}}
+                  <img id="uploadPreview{{id_produ}}" width="260" height="200" src="{{imagen}}" />
+                  {{else}}
+                  <img id="uploadPreview{{id_produ}}" width="260" height="200" src="/img/imagen-no-disponible.png" />
+                  {{/if}}   
+              </div>
+           
+            <div class="content">
+                <p>
+                   <form action="/dashboard/editado/{{id_produ}}" method="POST">
+                      <input type="text" name="nombre" value="{{nombre}} " >
+                      <input type="text" name="descripcion" value="{{descripcion}}" >
+                      <input type="number" name="precio" value="{{precio}}" >
+                      <input type="submit" value="finalizar edicion">
+                  </form>
+                   <form action="/images/upload/{{id_produ}}" method="POST" enctype="multipart/form-data">
+                      <input type="file" id="image{{id_produ}}" name="imagen" onchange="previewImage({{id_produ}});">
+                      <input type="submit" value="Guardar Imagen">
+                     </form>
+                     {{#each adicionales}}
+                     <p>
+                   <h2> {{nombreadic}} precio: {{precio}} 
+                       <span class="status return">
+							<a href="/dashboard/deleteadi/{{id_adi}}">eliminar  </a>
+						</span>
+                   </h2> 
+                        <br>
+                     </p>
+                     {{/each}}
+                   
+                    
+                    <form action="/dashboard/adicionales/{{id_produ}}" method="POST">
+                       <input type="text" name="nombreadic" placeholder="nueva opcion" >
+                       <input type="number" name="precio" placeholder="precio si es de paga">
+                       <input type="hidden" name="id_produ" value="{{id_produ}}">
+                       <input type="submit" value="agregar opcion">
+                    
+                    </form>
+                     
+              </p> 
+            </div>
+            {{/each}}
+            
+          </div>
+          </div>
